@@ -1,0 +1,314 @@
+
+Setting environment for using XAMPP for Windows.
+Itvedant CR-07@CR3-PC07 c:\xampp
+# mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 8
+Server version: 10.4.28-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> use sms
+Database changed
+MariaDB [sms]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| geeks4geeks        |
+| information_schema |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| sms                |
+| test               |
++--------------------+
+7 rows in set (0.018 sec)
+
+MariaDB [sms]> use sms;
+Database changed
+MariaDB [sms]> desc student
+    -> desc student;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'desc student' at line 2
+MariaDB [sms]> desc student;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| id      | tinyint(4)  | NO   | PRI | NULL    |       |
+| sname   | varchar(30) | NO   |     | NULL    |       |
+| dob     | date        | YES  |     | NULL    |       |
+| city    | varchar(20) | NO   |     | NULL    |       |
+| mobile  | int(11)     | NO   |     | NULL    |       |
+| pincode | int(11)     | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+6 rows in set (0.021 sec)
+
+MariaDB [sms]> create table india (rno int, name vaarchar(20) not null,dob date, city varchar(20) not null);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '(20) not null,dob date, city varchar(20) not null)' at line 1
+MariaDB [sms]> create table india (rno int, name varchar(20) not null,dob date, city varchar(20) not null);
+Query OK, 0 rows affected (0.014 sec)
+
+MariaDB [sms]> desc india
+    ->
+    -> desc india;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'desc india' at line 3
+MariaDB [sms]> desc india;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| rno   | int(11)     | YES  |     | NULL    |       |
+| name  | varchar(20) | NO   |     | NULL    |       |
+| dob   | date        | YES  |     | NULL    |       |
+| city  | varchar(20) | NO   |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+4 rows in set (0.014 sec)
+
+MariaDB [sms]> alter table india add primary key(name);
+Query OK, 0 rows affected (0.133 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [sms]> desc india;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| rno   | int(11)     | YES  |     | NULL    |       |
+| name  | varchar(20) | NO   | PRI | NULL    |       |
+| dob   | date        | YES  |     | NULL    |       |
+| city  | varchar(20) | NO   |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+4 rows in set (0.013 sec)
+
+MariaDB [sms]> alter table student drop primary key;
+Query OK, 0 rows affected (0.066 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [sms]> alter table student add primary key(rno);
+ERROR 1072 (42000): Key column 'rno' doesn't exist in table
+MariaDB [sms]> alter table student add primary key(rno);
+ERROR 1072 (42000): Key column 'rno' doesn't exist in table
+MariaDB [sms]> alter table india add primary key(rno);
+ERROR 1068 (42000): Multiple primary key defined
+MariaDB [sms]> alter table india drop primary key;
+Query OK, 0 rows affected (0.051 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [sms]> alter table india add primary key(rno);
+Query OK, 0 rows affected (0.037 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [sms]> alter table student add primary key(id);
+Query OK, 0 rows affected (0.083 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [sms]> desc india;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| rno   | int(11)     | NO   | PRI | NULL    |       |
+| name  | varchar(20) | NO   |     | NULL    |       |
+| dob   | date        | YES  |     | NULL    |       |
+| city  | varchar(20) | NO   |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+4 rows in set (0.015 sec)
+
+MariaDB [sms]> insert into india values(110,'Mr. Jatin Ghadi','2002-11-10','Mumbai');
+Query OK, 1 row affected (0.030 sec)
+
+MariaDB [sms]> select * from student;
+Empty set (0.000 sec)
+
+MariaDB [sms]> select * from india;
++-----+-----------------+------------+--------+
+| rno | name            | dob        | city   |
++-----+-----------------+------------+--------+
+| 110 | Mr. Jatin Ghadi | 2002-11-10 | Mumbai |
++-----+-----------------+------------+--------+
+1 row in set (0.000 sec)
+
+MariaDB [sms]> insert into india(name,rno,city)values('Mr Mihir Ghadshi',111,'Ratnagiri');
+Query OK, 1 row affected (0.050 sec)
+
+MariaDB [sms]> select * from india;
++-----+------------------+------------+-----------+
+| rno | name             | dob        | city      |
++-----+------------------+------------+-----------+
+| 110 | Mr. Jatin Ghadi  | 2002-11-10 | Mumbai    |
+| 111 | Mr Mihir Ghadshi | NULL       | Ratnagiri |
++-----+------------------+------------+-----------+
+2 rows in set (0.000 sec)
+
+MariaDB [sms]> insert into india values(112,'Mr Mihir Ghadshi', '2001-09-12','Ratnagiri'),
+    -> (112,'Mr Mihir Ghadshi', '2001-09-12','Ratnagiri'),
+    -> (112,'Mr Mihir Ghadshi', '2001-09-12','Ratnagiri'),
+    -> (112,'Mr Mihir Ghadshi', '2001-09-12','Ratnagiri'),
+    -> (112,'Mr Mihir Ghadshi', '2001-09-12','Ratnagiri'),
+    -> (112,'Mr Mihir Ghadshi', '2001-09-12','Ratnagiri'),
+    ->
+    -> (113,'Mr Mihir Ghadshi', '2001-09-12','Ratnagiri'),
+    -> (142,'Mr Mihir Ghadshi', '2001-09-12','Ratnagiri'),
+    -> (113,'Mr Mihir Ghadshi', '2001-09-12','Ratnagiri'),
+    -> (122,'Mr Mihir Ghadshi', '2001-09-12','Ratnagiri'),
+    -> (115,'Mr Mihir Ghadshi', '2001-09-12','Ratnagiri');
+ERROR 1062 (23000): Duplicate entry '112' for key 'PRIMARY'
+MariaDB [sms]> insert into india values(112,'Mr Mihir Ghadshi', '2001-09-12','Ratnagiri'),
+    -> (113,'Mr Mihir Ghadshi', '2001-09-12','Ratnagiri'),
+    -> (122,'Mr Mihir Ghadshi', '2001-09-12','Ratnagiri'),
+    -> (115,'Mr Mihir Ghadshi', '2001-09-12','Ratnagiri');
+Query OK, 4 rows affected (0.003 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+MariaDB [sms]> select * from india;
++-----+------------------+------------+-----------+
+| rno | name             | dob        | city      |
++-----+------------------+------------+-----------+
+| 110 | Mr. Jatin Ghadi  | 2002-11-10 | Mumbai    |
+| 111 | Mr Mihir Ghadshi | NULL       | Ratnagiri |
+| 112 | Mr Mihir Ghadshi | 2001-09-12 | Ratnagiri |
+| 113 | Mr Mihir Ghadshi | 2001-09-12 | Ratnagiri |
+| 115 | Mr Mihir Ghadshi | 2001-09-12 | Ratnagiri |
+| 122 | Mr Mihir Ghadshi | 2001-09-12 | Ratnagiri |
++-----+------------------+------------+-----------+
+6 rows in set (0.000 sec)
+
+MariaDB [sms]> insert into india values(114,'Mr Sahil Kadu', '2000-05-10','Shrivardhan'),
+    -> (118,'Mr Aditya Ghatge', '2001-10-11','Kolhapur'),
+    -> (121,'Mr Jay Chunekar', '2000-08-91','Alibaugh'),
+    -> (128,'Mr Pranav', '2000-08-19','Pune'),
+    -> (124,'Mr Jay Chunekar', '2000-03-23','Alibaugh');
+Query OK, 5 rows affected, 1 warning (0.003 sec)
+Records: 5  Duplicates: 0  Warnings: 1
+
+MariaDB [sms]> select * from india;
++-----+------------------+------------+-------------+
+| rno | name             | dob        | city        |
++-----+------------------+------------+-------------+
+| 110 | Mr. Jatin Ghadi  | 2002-11-10 | Mumbai      |
+| 111 | Mr Mihir Ghadshi | NULL       | Ratnagiri   |
+| 112 | Mr Mihir Ghadshi | 2001-09-12 | Ratnagiri   |
+| 113 | Mr Mihir Ghadshi | 2001-09-12 | Ratnagiri   |
+| 114 | Mr Sahil Kadu    | 2000-05-10 | Shrivardhan |
+| 115 | Mr Mihir Ghadshi | 2001-09-12 | Ratnagiri   |
+| 118 | Mr Aditya Ghatge | 2001-10-11 | Kolhapur    |
+| 121 | Mr Jay Chunekar  | 0000-00-00 | Alibaugh    |
+| 122 | Mr Mihir Ghadshi | 2001-09-12 | Ratnagiri   |
+| 124 | Mr Jay Chunekar  | 2000-03-23 | Alibaugh    |
+| 128 | Mr Pranav        | 2000-08-19 | Pune        |
++-----+------------------+------------+-------------+
+11 rows in set (0.000 sec)
+
+MariaDB [sms]> select rno,dob from india;
++-----+------------+
+| rno | dob        |
++-----+------------+
+| 110 | 2002-11-10 |
+| 111 | NULL       |
+| 112 | 2001-09-12 |
+| 113 | 2001-09-12 |
+| 114 | 2000-05-10 |
+| 115 | 2001-09-12 |
+| 118 | 2001-10-11 |
+| 121 | 0000-00-00 |
+| 122 | 2001-09-12 |
+| 124 | 2000-03-23 |
+| 128 | 2000-08-19 |
++-----+------------+
+11 rows in set (0.000 sec)
+
+MariaDB [sms]> select * from india where rno=112;
++-----+------------------+------------+-----------+
+| rno | name             | dob        | city      |
++-----+------------------+------------+-----------+
+| 112 | Mr Mihir Ghadshi | 2001-09-12 | Ratnagiri |
++-----+------------------+------------+-----------+
+1 row in set (0.000 sec)
+
+MariaDB [sms]> select * from india where city='pune';
++-----+-----------+------------+------+
+| rno | name      | dob        | city |
++-----+-----------+------------+------+
+| 128 | Mr Pranav | 2000-08-19 | Pune |
++-----+-----------+------------+------+
+1 row in set (0.000 sec)
+
+MariaDB [sms]> alter table student add column course varchar(20) not null;
+Query OK, 0 rows affected (0.015 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [sms]> desc india;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| rno   | int(11)     | NO   | PRI | NULL    |       |
+| name  | varchar(20) | NO   |     | NULL    |       |
+| dob   | date        | YES  |     | NULL    |       |
+| city  | varchar(20) | NO   |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+4 rows in set (0.013 sec)
+
+MariaDB [sms]> alter table india add column course varchar(20) not null;
+Query OK, 0 rows affected (0.015 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [sms]> desc india;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| rno    | int(11)     | NO   | PRI | NULL    |       |
+| name   | varchar(20) | NO   |     | NULL    |       |
+| dob    | date        | YES  |     | NULL    |       |
+| city   | varchar(20) | NO   |     | NULL    |       |
+| course | varchar(20) | NO   |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+5 rows in set (0.014 sec)
+
+MariaDB [sms]> select * from india;
++-----+------------------+------------+-------------+--------+
+| rno | name             | dob        | city        | course |
++-----+------------------+------------+-------------+--------+
+| 110 | Mr. Jatin Ghadi  | 2002-11-10 | Mumbai      |        |
+| 111 | Mr Mihir Ghadshi | NULL       | Ratnagiri   |        |
+| 112 | Mr Mihir Ghadshi | 2001-09-12 | Ratnagiri   |        |
+| 113 | Mr Mihir Ghadshi | 2001-09-12 | Ratnagiri   |        |
+| 114 | Mr Sahil Kadu    | 2000-05-10 | Shrivardhan |        |
+| 115 | Mr Mihir Ghadshi | 2001-09-12 | Ratnagiri   |        |
+| 118 | Mr Aditya Ghatge | 2001-10-11 | Kolhapur    |        |
+| 121 | Mr Jay Chunekar  | 0000-00-00 | Alibaugh    |        |
+| 122 | Mr Mihir Ghadshi | 2001-09-12 | Ratnagiri   |        |
+| 124 | Mr Jay Chunekar  | 2000-03-23 | Alibaugh    |        |
+| 128 | Mr Pranav        | 2000-08-19 | Pune        |        |
++-----+------------------+------------+-------------+--------+
+11 rows in set (0.000 sec)
+
+MariaDB [sms]> update student set course='My SQL' where rno=111,112,113,115,122;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '112,113,115,122' at line 1
+MariaDB [sms]> update india set course='My SQL' where rno=111,112,113,115,122;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '112,113,115,122' at line 1
+MariaDB [sms]> update india set course='My SQL' where rno=111;
+Query OK, 1 row affected (0.003 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [sms]> select * from india;
++-----+------------------+------------+-------------+--------+
+| rno | name             | dob        | city        | course |
++-----+------------------+------------+-------------+--------+
+| 110 | Mr. Jatin Ghadi  | 2002-11-10 | Mumbai      |        |
+| 111 | Mr Mihir Ghadshi | NULL       | Ratnagiri   | My SQL |
+| 112 | Mr Mihir Ghadshi | 2001-09-12 | Ratnagiri   |        |
+| 113 | Mr Mihir Ghadshi | 2001-09-12 | Ratnagiri   |        |
+| 114 | Mr Sahil Kadu    | 2000-05-10 | Shrivardhan |        |
+| 115 | Mr Mihir Ghadshi | 2001-09-12 | Ratnagiri   |        |
+| 118 | Mr Aditya Ghatge | 2001-10-11 | Kolhapur    |        |
+| 121 | Mr Jay Chunekar  | 0000-00-00 | Alibaugh    |        |
+| 122 | Mr Mihir Ghadshi | 2001-09-12 | Ratnagiri   |        |
+| 124 | Mr Jay Chunekar  | 2000-03-23 | Alibaugh    |        |
+| 128 | Mr Pranav        | 2000-08-19 | Pune        |        |
++-----+------------------+------------+-------------+--------+
+11 rows in set (0.000 sec)
+
+MariaDB [sms]> exit
+Bye
+
+Itvedant CR-07@CR3-PC07 c:\xampp
+#

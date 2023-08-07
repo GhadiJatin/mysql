@@ -1,0 +1,211 @@
+
+Setting environment for using XAMPP for Windows.
+Itvedant CR-07@CR3-PC07 c:\xampp
+# mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 8
+Server version: 10.4.28-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> show databases
+    -> show databases;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'show databases' at line 2
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| geeks4geeks        |
+| information_schema |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| test               |
++--------------------+
+6 rows in set (0.027 sec)
+
+MariaDB [(none)]> create database sms;
+Query OK, 1 row affected (0.002 sec)
+
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| geeks4geeks        |
+| information_schema |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| sms                |
+| test               |
++--------------------+
+7 rows in set (0.001 sec)
+
+MariaDB [(none)]> use sms
+Database changed
+MariaDB [sms]> use sms;
+Database changed
+MariaDB [sms]> create table student(id tinyint primary key, sname varchar(30) not null, dob date, mobile int not null);
+Query OK, 0 rows affected (0.062 sec)
+
+MariaDB [sms]> show tables;
++---------------+
+| Tables_in_sms |
++---------------+
+| student       |
++---------------+
+1 row in set (0.001 sec)
+
+MariaDB [sms]> desc student;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| id     | tinyint(4)  | NO   | PRI | NULL    |       |
+| sname  | varchar(30) | NO   |     | NULL    |       |
+| dob    | date        | YES  |     | NULL    |       |
+| mobile | int(11)     | NO   |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+4 rows in set (0.016 sec)
+
+MariaDB [sms]> alter table student add column pinacode int not null, add column course varchar(20);
+Query OK, 0 rows affected (0.016 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [sms]> desc student;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| id       | tinyint(4)  | NO   | PRI | NULL    |       |
+| sname    | varchar(30) | NO   |     | NULL    |       |
+| dob      | date        | YES  |     | NULL    |       |
+| mobile   | int(11)     | NO   |     | NULL    |       |
+| pinacode | int(11)     | NO   |     | NULL    |       |
+| course   | varchar(20) | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+6 rows in set (0.012 sec)
+
+MariaDB [sms]> rename pinacode to pincode
+    -> rename pinacode to pincode;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'pinacode to pincode
+rename pinacode to pincode' at line 1
+MariaDB [sms]> alter table student rename column pinacode to pincode;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'column pinacode to pincode' at line 1
+MariaDB [sms]> alter table student add column city varchar(20) not null after dob;
+Query OK, 0 rows affected (0.064 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [sms]> desc student
+    -> desc student;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'desc student' at line 2
+MariaDB [sms]> desc student;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| id       | tinyint(4)  | NO   | PRI | NULL    |       |
+| sname    | varchar(30) | NO   |     | NULL    |       |
+| dob      | date        | YES  |     | NULL    |       |
+| city     | varchar(20) | NO   |     | NULL    |       |
+| mobile   | int(11)     | NO   |     | NULL    |       |
+| pinacode | int(11)     | NO   |     | NULL    |       |
+| course   | varchar(20) | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+7 rows in set (0.015 sec)
+
+MariaDB [sms]> alter table student drop column pinacode);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ')' at line 1
+MariaDB [sms]> alter table student drop column pinacode;
+Query OK, 0 rows affected (0.033 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [sms]> desc student;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| id     | tinyint(4)  | NO   | PRI | NULL    |       |
+| sname  | varchar(30) | NO   |     | NULL    |       |
+| dob    | date        | YES  |     | NULL    |       |
+| city   | varchar(20) | NO   |     | NULL    |       |
+| mobile | int(11)     | NO   |     | NULL    |       |
+| course | varchar(20) | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+6 rows in set (0.012 sec)
+
+MariaDB [sms]> alter table student add column pinacode int not null;
+Query OK, 0 rows affected (0.013 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [sms]> desc student;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| id       | tinyint(4)  | NO   | PRI | NULL    |       |
+| sname    | varchar(30) | NO   |     | NULL    |       |
+| dob      | date        | YES  |     | NULL    |       |
+| city     | varchar(20) | NO   |     | NULL    |       |
+| mobile   | int(11)     | NO   |     | NULL    |       |
+| course   | varchar(20) | YES  |     | NULL    |       |
+| pinacode | int(11)     | NO   |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+7 rows in set (0.012 sec)
+
+MariaDB [sms]> alter table student rename column pinacode to pincode;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'column pinacode to pincode' at line 1
+MariaDB [sms]> alter table student change pinacode pincode;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+MariaDB [sms]> alter table student change pinacode pincode;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+MariaDB [sms]> alter table student change pinacode pincode int;
+Query OK, 0 rows affected (0.039 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [sms]> desc student;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| id      | tinyint(4)  | NO   | PRI | NULL    |       |
+| sname   | varchar(30) | NO   |     | NULL    |       |
+| dob     | date        | YES  |     | NULL    |       |
+| city    | varchar(20) | NO   |     | NULL    |       |
+| mobile  | int(11)     | NO   |     | NULL    |       |
+| course  | varchar(20) | YES  |     | NULL    |       |
+| pincode | int(11)     | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+7 rows in set (0.015 sec)
+
+MariaDB [sms]> alter table student add column city varchar(20) not null after mobile;
+ERROR 1060 (42S21): Duplicate column name 'city'
+MariaDB [sms]> desc student;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| id      | tinyint(4)  | NO   | PRI | NULL    |       |
+| sname   | varchar(30) | NO   |     | NULL    |       |
+| dob     | date        | YES  |     | NULL    |       |
+| city    | varchar(20) | NO   |     | NULL    |       |
+| mobile  | int(11)     | NO   |     | NULL    |       |
+| course  | varchar(20) | YES  |     | NULL    |       |
+| pincode | int(11)     | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+7 rows in set (0.015 sec)
+
+MariaDB [sms]> alter table student drop column course;
+Query OK, 0 rows affected (0.062 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [sms]> desc student;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| id      | tinyint(4)  | NO   | PRI | NULL    |       |
+| sname   | varchar(30) | NO   |     | NULL    |       |
+| dob     | date        | YES  |     | NULL    |       |
+| city    | varchar(20) | NO   |     | NULL    |       |
+| mobile  | int(11)     | NO   |     | NULL    |       |
+| pincode | int(11)     | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+6 rows in set (0.016 sec)
+
+MariaDB [sms]>
