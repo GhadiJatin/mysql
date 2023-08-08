@@ -1,0 +1,531 @@
+
+Setting environment for using XAMPP for Windows.
+Itvedant CR-07@CR3-PC07 c:\xampp
+# mysql -u root
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 8
+Server version: 10.4.28-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| geeks4geeks        |
+| information_schema |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| sms                |
+| test               |
++--------------------+
+7 rows in set (0.025 sec)
+
+MariaDB [(none)]> use sms
+Database changed
+MariaDB [sms]> select * from india;
++-----+------------------+------------+-------------+--------+
+| rno | name             | dob        | city        | course |
++-----+------------------+------------+-------------+--------+
+| 110 | Mr. Jatin Ghadi  | 2002-11-10 | Mumbai      |        |
+| 111 | Mr Mihir Ghadshi | NULL       | Ratnagiri   | My SQL |
+| 112 | Mr Mihir Ghadshi | 2001-09-12 | Ratnagiri   |        |
+| 113 | Mr Mihir Ghadshi | 2001-09-12 | Ratnagiri   |        |
+| 114 | Mr Sahil Kadu    | 2000-05-10 | Shrivardhan |        |
+| 115 | Mr Mihir Ghadshi | 2001-09-12 | Ratnagiri   |        |
+| 118 | Mr Aditya Ghatge | 2001-10-11 | Kolhapur    |        |
+| 121 | Mr Jay Chunekar  | 0000-00-00 | Alibaugh    |        |
+| 122 | Mr Mihir Ghadshi | 2001-09-12 | Ratnagiri   |        |
+| 124 | Mr Jay Chunekar  | 2000-03-23 | Alibaugh    |        |
+| 128 | Mr Pranav        | 2000-08-19 | Pune        |        |
++-----+------------------+------------+-------------+--------+
+11 rows in set (0.049 sec)
+
+MariaDB [sms]> show tables ;
++---------------+
+| Tables_in_sms |
++---------------+
+| india         |
+| student       |
++---------------+
+2 rows in set (0.001 sec)
+
+MariaDB [sms]> update india set name='Jadhav' where rno=128;
+Query OK, 1 row affected (0.003 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [sms]> select * from india;
++-----+------------------+------------+-------------+--------+
+| rno | name             | dob        | city        | course |
++-----+------------------+------------+-------------+--------+
+| 110 | Mr. Jatin Ghadi  | 2002-11-10 | Mumbai      |        |
+| 111 | Mr Mihir Ghadshi | NULL       | Ratnagiri   | My SQL |
+| 112 | Mr Mihir Ghadshi | 2001-09-12 | Ratnagiri   |        |
+| 113 | Mr Mihir Ghadshi | 2001-09-12 | Ratnagiri   |        |
+| 114 | Mr Sahil Kadu    | 2000-05-10 | Shrivardhan |        |
+| 115 | Mr Mihir Ghadshi | 2001-09-12 | Ratnagiri   |        |
+| 118 | Mr Aditya Ghatge | 2001-10-11 | Kolhapur    |        |
+| 121 | Mr Jay Chunekar  | 0000-00-00 | Alibaugh    |        |
+| 122 | Mr Mihir Ghadshi | 2001-09-12 | Ratnagiri   |        |
+| 124 | Mr Jay Chunekar  | 2000-03-23 | Alibaugh    |        |
+| 128 | Jadhav           | 2000-08-19 | Pune        |        |
++-----+------------------+------------+-------------+--------+
+11 rows in set (0.000 sec)
+
+MariaDB [sms]> update india set name='Mr Pranav Jadhav' where rno=128;
+Query OK, 1 row affected (0.003 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [sms]> select * from india;
++-----+------------------+------------+-------------+--------+
+| rno | name             | dob        | city        | course |
++-----+------------------+------------+-------------+--------+
+| 110 | Mr. Jatin Ghadi  | 2002-11-10 | Mumbai      |        |
+| 111 | Mr Mihir Ghadshi | NULL       | Ratnagiri   | My SQL |
+| 112 | Mr Mihir Ghadshi | 2001-09-12 | Ratnagiri   |        |
+| 113 | Mr Mihir Ghadshi | 2001-09-12 | Ratnagiri   |        |
+| 114 | Mr Sahil Kadu    | 2000-05-10 | Shrivardhan |        |
+| 115 | Mr Mihir Ghadshi | 2001-09-12 | Ratnagiri   |        |
+| 118 | Mr Aditya Ghatge | 2001-10-11 | Kolhapur    |        |
+| 121 | Mr Jay Chunekar  | 0000-00-00 | Alibaugh    |        |
+| 122 | Mr Mihir Ghadshi | 2001-09-12 | Ratnagiri   |        |
+| 124 | Mr Jay Chunekar  | 2000-03-23 | Alibaugh    |        |
+| 128 | Mr Pranav Jadhav | 2000-08-19 | Pune        |        |
++-----+------------------+------------+-------------+--------+
+11 rows in set (0.000 sec)
+
+MariaDB [sms]> update india set course='ML' where rno=118;
+Query OK, 1 row affected (0.004 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [sms]> select * from india;
++-----+------------------+------------+-------------+--------+
+| rno | name             | dob        | city        | course |
++-----+------------------+------------+-------------+--------+
+| 110 | Mr. Jatin Ghadi  | 2002-11-10 | Mumbai      |        |
+| 111 | Mr Mihir Ghadshi | NULL       | Ratnagiri   | My SQL |
+| 112 | Mr Mihir Ghadshi | 2001-09-12 | Ratnagiri   |        |
+| 113 | Mr Mihir Ghadshi | 2001-09-12 | Ratnagiri   |        |
+| 114 | Mr Sahil Kadu    | 2000-05-10 | Shrivardhan |        |
+| 115 | Mr Mihir Ghadshi | 2001-09-12 | Ratnagiri   |        |
+| 118 | Mr Aditya Ghatge | 2001-10-11 | Kolhapur    | ML     |
+| 121 | Mr Jay Chunekar  | 0000-00-00 | Alibaugh    |        |
+| 122 | Mr Mihir Ghadshi | 2001-09-12 | Ratnagiri   |        |
+| 124 | Mr Jay Chunekar  | 2000-03-23 | Alibaugh    |        |
+| 128 | Mr Pranav Jadhav | 2000-08-19 | Pune        |        |
++-----+------------------+------------+-------------+--------+
+11 rows in set (0.000 sec)
+
+MariaDB [sms]> update india set course='Python' where rno=110;
+Query OK, 1 row affected (0.003 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [sms]> select * from india;
++-----+------------------+------------+-------------+--------+
+| rno | name             | dob        | city        | course |
++-----+------------------+------------+-------------+--------+
+| 110 | Mr. Jatin Ghadi  | 2002-11-10 | Mumbai      | Python |
+| 111 | Mr Mihir Ghadshi | NULL       | Ratnagiri   | My SQL |
+| 112 | Mr Mihir Ghadshi | 2001-09-12 | Ratnagiri   |        |
+| 113 | Mr Mihir Ghadshi | 2001-09-12 | Ratnagiri   |        |
+| 114 | Mr Sahil Kadu    | 2000-05-10 | Shrivardhan |        |
+| 115 | Mr Mihir Ghadshi | 2001-09-12 | Ratnagiri   |        |
+| 118 | Mr Aditya Ghatge | 2001-10-11 | Kolhapur    | ML     |
+| 121 | Mr Jay Chunekar  | 0000-00-00 | Alibaugh    |        |
+| 122 | Mr Mihir Ghadshi | 2001-09-12 | Ratnagiri   |        |
+| 124 | Mr Jay Chunekar  | 2000-03-23 | Alibaugh    |        |
+| 128 | Mr Pranav Jadhav | 2000-08-19 | Pune        |        |
++-----+------------------+------------+-------------+--------+
+11 rows in set (0.000 sec)
+
+MariaDB [sms]> update india set course='Web Designing' where rno=in(112,113,115,122);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'in(112,113,115,122)' at line 1
+MariaDB [sms]> update india set course='Web Design' where rno=in(112,113,115,122);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'in(112,113,115,122)' at line 1
+MariaDB [sms]> update india set course='Web Designing' where rno in(112,113,115,122);
+Query OK, 4 rows affected (0.004 sec)
+Rows matched: 4  Changed: 4  Warnings: 0
+
+MariaDB [sms]> select * from india;
++-----+------------------+------------+-------------+---------------+
+| rno | name             | dob        | city        | course        |
++-----+------------------+------------+-------------+---------------+
+| 110 | Mr. Jatin Ghadi  | 2002-11-10 | Mumbai      | Python        |
+| 111 | Mr Mihir Ghadshi | NULL       | Ratnagiri   | My SQL        |
+| 112 | Mr Mihir Ghadshi | 2001-09-12 | Ratnagiri   | Web Designing |
+| 113 | Mr Mihir Ghadshi | 2001-09-12 | Ratnagiri   | Web Designing |
+| 114 | Mr Sahil Kadu    | 2000-05-10 | Shrivardhan |               |
+| 115 | Mr Mihir Ghadshi | 2001-09-12 | Ratnagiri   | Web Designing |
+| 118 | Mr Aditya Ghatge | 2001-10-11 | Kolhapur    | ML            |
+| 121 | Mr Jay Chunekar  | 0000-00-00 | Alibaugh    |               |
+| 122 | Mr Mihir Ghadshi | 2001-09-12 | Ratnagiri   | Web Designing |
+| 124 | Mr Jay Chunekar  | 2000-03-23 | Alibaugh    |               |
+| 128 | Mr Pranav Jadhav | 2000-08-19 | Pune        |               |
++-----+------------------+------------+-------------+---------------+
+11 rows in set (0.000 sec)
+
+MariaDB [sms]> update india set course='Software Testing' where rno=114;
+Query OK, 1 row affected (0.050 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [sms]> update india set course='Cyber Security' where rno=124;
+Query OK, 1 row affected (0.003 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [sms]> update india set course='Java Program' where rno=128;
+Query OK, 1 row affected (0.003 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [sms]> select * from india;
++-----+------------------+------------+-------------+------------------+
+| rno | name             | dob        | city        | course           |
++-----+------------------+------------+-------------+------------------+
+| 110 | Mr. Jatin Ghadi  | 2002-11-10 | Mumbai      | Python           |
+| 111 | Mr Mihir Ghadshi | NULL       | Ratnagiri   | My SQL           |
+| 112 | Mr Mihir Ghadshi | 2001-09-12 | Ratnagiri   | Web Designing    |
+| 113 | Mr Mihir Ghadshi | 2001-09-12 | Ratnagiri   | Web Designing    |
+| 114 | Mr Sahil Kadu    | 2000-05-10 | Shrivardhan | Software Testing |
+| 115 | Mr Mihir Ghadshi | 2001-09-12 | Ratnagiri   | Web Designing    |
+| 118 | Mr Aditya Ghatge | 2001-10-11 | Kolhapur    | ML               |
+| 121 | Mr Jay Chunekar  | 0000-00-00 | Alibaugh    |                  |
+| 122 | Mr Mihir Ghadshi | 2001-09-12 | Ratnagiri   | Web Designing    |
+| 124 | Mr Jay Chunekar  | 2000-03-23 | Alibaugh    | Cyber Security   |
+| 128 | Mr Pranav Jadhav | 2000-08-19 | Pune        | Java Program     |
++-----+------------------+------------+-------------+------------------+
+11 rows in set (0.000 sec)
+
+MariaDB [sms]> update india set dob='2002-06-16' where rno=111;
+Query OK, 1 row affected (0.050 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [sms]> select * from india;
++-----+------------------+------------+-------------+------------------+
+| rno | name             | dob        | city        | course           |
++-----+------------------+------------+-------------+------------------+
+| 110 | Mr. Jatin Ghadi  | 2002-11-10 | Mumbai      | Python           |
+| 111 | Mr Mihir Ghadshi | 2002-06-16 | Ratnagiri   | My SQL           |
+| 112 | Mr Mihir Ghadshi | 2001-09-12 | Ratnagiri   | Web Designing    |
+| 113 | Mr Mihir Ghadshi | 2001-09-12 | Ratnagiri   | Web Designing    |
+| 114 | Mr Sahil Kadu    | 2000-05-10 | Shrivardhan | Software Testing |
+| 115 | Mr Mihir Ghadshi | 2001-09-12 | Ratnagiri   | Web Designing    |
+| 118 | Mr Aditya Ghatge | 2001-10-11 | Kolhapur    | ML               |
+| 121 | Mr Jay Chunekar  | 0000-00-00 | Alibaugh    |                  |
+| 122 | Mr Mihir Ghadshi | 2001-09-12 | Ratnagiri   | Web Designing    |
+| 124 | Mr Jay Chunekar  | 2000-03-23 | Alibaugh    | Cyber Security   |
+| 128 | Mr Pranav Jadhav | 2000-08-19 | Pune        | Java Program     |
++-----+------------------+------------+-------------+------------------+
+11 rows in set (0.000 sec)
+
+MariaDB [sms]> inser into student values (190, 'anamika pandey', '2001-09-23','pune','Python'),
+    -> (170,'Pinki Sharma',/1998-09-19','Indore','ML');
+    '> ;
+    '> inser into student values (190, 'anamika pandey', '2001-09-23','pune','Python'),
+    '> (170,'Pinki Sharma',/1998-09-19','Indore','ML');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'inser into student values (190, 'anamika pandey', '2001-09-23','pune','Python...' at line 1
+MariaDB [sms]> inser into student values (190, 'anamika pandey', '2001-09-23','pune','Python'),
+    -> (170,'Pinki Sharma',1998-09-19','Indore','ML');
+    '> insert into student values (190, 'anamika pandey', '2001-09-23','pune','Python'),
+    '> (170,'Pinki Sharma',1998-09-19','Indore','ML');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'inser into student values (190, 'anamika pandey', '2001-09-23','pune','Python...' at line 1
+MariaDB [sms]> insert into student values (190, 'anamika pandey', '2001-09-23','pune','Python'),
+    -> (170,'Pinki Sharma','1998-09-19','Indore','ML');
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+MariaDB [sms]> insert into india values (190, 'anamika pandey', '2001-09-23','pune','Python'),
+    -> (170,'Pinki Sharma','1998-09-19','Indore','ML');
+Query OK, 2 rows affected (0.003 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+MariaDB [sms]> select * from india;
++-----+------------------+------------+-------------+------------------+
+| rno | name             | dob        | city        | course           |
++-----+------------------+------------+-------------+------------------+
+| 110 | Mr. Jatin Ghadi  | 2002-11-10 | Mumbai      | Python           |
+| 111 | Mr Mihir Ghadshi | 2002-06-16 | Ratnagiri   | My SQL           |
+| 112 | Mr Mihir Ghadshi | 2001-09-12 | Ratnagiri   | Web Designing    |
+| 113 | Mr Mihir Ghadshi | 2001-09-12 | Ratnagiri   | Web Designing    |
+| 114 | Mr Sahil Kadu    | 2000-05-10 | Shrivardhan | Software Testing |
+| 115 | Mr Mihir Ghadshi | 2001-09-12 | Ratnagiri   | Web Designing    |
+| 118 | Mr Aditya Ghatge | 2001-10-11 | Kolhapur    | ML               |
+| 121 | Mr Jay Chunekar  | 0000-00-00 | Alibaugh    |                  |
+| 122 | Mr Mihir Ghadshi | 2001-09-12 | Ratnagiri   | Web Designing    |
+| 124 | Mr Jay Chunekar  | 2000-03-23 | Alibaugh    | Cyber Security   |
+| 128 | Mr Pranav Jadhav | 2000-08-19 | Pune        | Java Program     |
+| 170 | Pinki Sharma     | 1998-09-19 | Indore      | ML               |
+| 190 | anamika pandey   | 2001-09-23 | pune        | Python           |
++-----+------------------+------------+-------------+------------------+
+13 rows in set (0.000 sec)
+
+MariaDB [sms]> update india set name='Miss Pinki Sharma' where rno=170;
+Query OK, 1 row affected (0.003 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [sms]> update india set name='Miss Anamika Pandey' where rno=190;
+Query OK, 1 row affected (0.050 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [sms]> select * from india;
++-----+---------------------+------------+-------------+------------------+
+| rno | name                | dob        | city        | course           |
++-----+---------------------+------------+-------------+------------------+
+| 110 | Mr. Jatin Ghadi     | 2002-11-10 | Mumbai      | Python           |
+| 111 | Mr Mihir Ghadshi    | 2002-06-16 | Ratnagiri   | My SQL           |
+| 112 | Mr Mihir Ghadshi    | 2001-09-12 | Ratnagiri   | Web Designing    |
+| 113 | Mr Mihir Ghadshi    | 2001-09-12 | Ratnagiri   | Web Designing    |
+| 114 | Mr Sahil Kadu       | 2000-05-10 | Shrivardhan | Software Testing |
+| 115 | Mr Mihir Ghadshi    | 2001-09-12 | Ratnagiri   | Web Designing    |
+| 118 | Mr Aditya Ghatge    | 2001-10-11 | Kolhapur    | ML               |
+| 121 | Mr Jay Chunekar     | 0000-00-00 | Alibaugh    |                  |
+| 122 | Mr Mihir Ghadshi    | 2001-09-12 | Ratnagiri   | Web Designing    |
+| 124 | Mr Jay Chunekar     | 2000-03-23 | Alibaugh    | Cyber Security   |
+| 128 | Mr Pranav Jadhav    | 2000-08-19 | Pune        | Java Program     |
+| 170 | Miss Pinki Sharma   | 1998-09-19 | Indore      | ML               |
+| 190 | Miss Anamika Pandey | 2001-09-23 | pune        | Python           |
++-----+---------------------+------------+-------------+------------------+
+13 rows in set (0.000 sec)
+
+MariaDB [sms]> select * from india where name like 'Mr M%';
++-----+------------------+------------+-----------+---------------+
+| rno | name             | dob        | city      | course        |
++-----+------------------+------------+-----------+---------------+
+| 111 | Mr Mihir Ghadshi | 2002-06-16 | Ratnagiri | My SQL        |
+| 112 | Mr Mihir Ghadshi | 2001-09-12 | Ratnagiri | Web Designing |
+| 113 | Mr Mihir Ghadshi | 2001-09-12 | Ratnagiri | Web Designing |
+| 115 | Mr Mihir Ghadshi | 2001-09-12 | Ratnagiri | Web Designing |
+| 122 | Mr Mihir Ghadshi | 2001-09-12 | Ratnagiri | Web Designing |
++-----+------------------+------------+-----------+---------------+
+5 rows in set (0.001 sec)
+
+MariaDB [sms]> select * from india where name like '___J%';
++-----+-----------------+------------+----------+----------------+
+| rno | name            | dob        | city     | course         |
++-----+-----------------+------------+----------+----------------+
+| 121 | Mr Jay Chunekar | 0000-00-00 | Alibaugh |                |
+| 124 | Mr Jay Chunekar | 2000-03-23 | Alibaugh | Cyber Security |
++-----+-----------------+------------+----------+----------------+
+2 rows in set (0.000 sec)
+
+MariaDB [sms]> update india set name='Ms Pinki Sharma' where rno=170;
+Query OK, 1 row affected (0.003 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [sms]> update india set name='Ms Anamika Pandey' where rno=190;
+Query OK, 1 row affected (0.051 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [sms]> update india set name='Mr Jatin Ghadi' where rno=110;
+Query OK, 1 row affected (0.051 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [sms]> select * from india where name like '___J%';
++-----+-----------------+------------+----------+----------------+
+| rno | name            | dob        | city     | course         |
++-----+-----------------+------------+----------+----------------+
+| 110 | Mr Jatin Ghadi  | 2002-11-10 | Mumbai   | Python         |
+| 121 | Mr Jay Chunekar | 0000-00-00 | Alibaugh |                |
+| 124 | Mr Jay Chunekar | 2000-03-23 | Alibaugh | Cyber Security |
++-----+-----------------+------------+----------+----------------+
+3 rows in set (0.000 sec)
+
+MariaDB [sms]> select * from india;
++-----+-------------------+------------+-------------+------------------+
+| rno | name              | dob        | city        | course           |
++-----+-------------------+------------+-------------+------------------+
+| 110 | Mr Jatin Ghadi    | 2002-11-10 | Mumbai      | Python           |
+| 111 | Mr Mihir Ghadshi  | 2002-06-16 | Ratnagiri   | My SQL           |
+| 112 | Mr Mihir Ghadshi  | 2001-09-12 | Ratnagiri   | Web Designing    |
+| 113 | Mr Mihir Ghadshi  | 2001-09-12 | Ratnagiri   | Web Designing    |
+| 114 | Mr Sahil Kadu     | 2000-05-10 | Shrivardhan | Software Testing |
+| 115 | Mr Mihir Ghadshi  | 2001-09-12 | Ratnagiri   | Web Designing    |
+| 118 | Mr Aditya Ghatge  | 2001-10-11 | Kolhapur    | ML               |
+| 121 | Mr Jay Chunekar   | 0000-00-00 | Alibaugh    |                  |
+| 122 | Mr Mihir Ghadshi  | 2001-09-12 | Ratnagiri   | Web Designing    |
+| 124 | Mr Jay Chunekar   | 2000-03-23 | Alibaugh    | Cyber Security   |
+| 128 | Mr Pranav Jadhav  | 2000-08-19 | Pune        | Java Program     |
+| 170 | Ms Pinki Sharma   | 1998-09-19 | Indore      | ML               |
+| 190 | Ms Anamika Pandey | 2001-09-23 | pune        | Python           |
++-----+-------------------+------------+-------------+------------------+
+13 rows in set (0.000 sec)
+
+MariaDB [sms]> select * from india where name like '___A%';
++-----+-------------------+------------+----------+--------+
+| rno | name              | dob        | city     | course |
++-----+-------------------+------------+----------+--------+
+| 118 | Mr Aditya Ghatge  | 2001-10-11 | Kolhapur | ML     |
+| 190 | Ms Anamika Pandey | 2001-09-23 | pune     | Python |
++-----+-------------------+------------+----------+--------+
+2 rows in set (0.000 sec)
+
+MariaDB [sms]> select * from student where rno between 130 and 160;
+ERROR 1054 (42S22): Unknown column 'rno' in 'where clause'
+MariaDB [sms]> select * from india where rno between 130 and 160;
+Empty set (0.001 sec)
+
+MariaDB [sms]> select * from india where rno between 110 and 160;
++-----+------------------+------------+-------------+------------------+
+| rno | name             | dob        | city        | course           |
++-----+------------------+------------+-------------+------------------+
+| 110 | Mr Jatin Ghadi   | 2002-11-10 | Mumbai      | Python           |
+| 111 | Mr Mihir Ghadshi | 2002-06-16 | Ratnagiri   | My SQL           |
+| 112 | Mr Mihir Ghadshi | 2001-09-12 | Ratnagiri   | Web Designing    |
+| 113 | Mr Mihir Ghadshi | 2001-09-12 | Ratnagiri   | Web Designing    |
+| 114 | Mr Sahil Kadu    | 2000-05-10 | Shrivardhan | Software Testing |
+| 115 | Mr Mihir Ghadshi | 2001-09-12 | Ratnagiri   | Web Designing    |
+| 118 | Mr Aditya Ghatge | 2001-10-11 | Kolhapur    | ML               |
+| 121 | Mr Jay Chunekar  | 0000-00-00 | Alibaugh    |                  |
+| 122 | Mr Mihir Ghadshi | 2001-09-12 | Ratnagiri   | Web Designing    |
+| 124 | Mr Jay Chunekar  | 2000-03-23 | Alibaugh    | Cyber Security   |
+| 128 | Mr Pranav Jadhav | 2000-08-19 | Pune        | Java Program     |
++-----+------------------+------------+-------------+------------------+
+11 rows in set (0.000 sec)
+
+MariaDB [sms]> from india order by name;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'from india order by name' at line 1
+MariaDB [sms]> select * from india order by name;
++-----+-------------------+------------+-------------+------------------+
+| rno | name              | dob        | city        | course           |
++-----+-------------------+------------+-------------+------------------+
+| 118 | Mr Aditya Ghatge  | 2001-10-11 | Kolhapur    | ML               |
+| 110 | Mr Jatin Ghadi    | 2002-11-10 | Mumbai      | Python           |
+| 121 | Mr Jay Chunekar   | 0000-00-00 | Alibaugh    |                  |
+| 124 | Mr Jay Chunekar   | 2000-03-23 | Alibaugh    | Cyber Security   |
+| 122 | Mr Mihir Ghadshi  | 2001-09-12 | Ratnagiri   | Web Designing    |
+| 112 | Mr Mihir Ghadshi  | 2001-09-12 | Ratnagiri   | Web Designing    |
+| 111 | Mr Mihir Ghadshi  | 2002-06-16 | Ratnagiri   | My SQL           |
+| 115 | Mr Mihir Ghadshi  | 2001-09-12 | Ratnagiri   | Web Designing    |
+| 113 | Mr Mihir Ghadshi  | 2001-09-12 | Ratnagiri   | Web Designing    |
+| 128 | Mr Pranav Jadhav  | 2000-08-19 | Pune        | Java Program     |
+| 114 | Mr Sahil Kadu     | 2000-05-10 | Shrivardhan | Software Testing |
+| 190 | Ms Anamika Pandey | 2001-09-23 | pune        | Python           |
+| 170 | Ms Pinki Sharma   | 1998-09-19 | Indore      | ML               |
++-----+-------------------+------------+-------------+------------------+
+13 rows in set (0.001 sec)
+
+MariaDB [sms]> from india order by name;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'from india order by name' at line 1
+MariaDB [sms]> select * from india;
++-----+-------------------+------------+-------------+------------------+
+| rno | name              | dob        | city        | course           |
++-----+-------------------+------------+-------------+------------------+
+| 110 | Mr Jatin Ghadi    | 2002-11-10 | Mumbai      | Python           |
+| 111 | Mr Mihir Ghadshi  | 2002-06-16 | Ratnagiri   | My SQL           |
+| 112 | Mr Mihir Ghadshi  | 2001-09-12 | Ratnagiri   | Web Designing    |
+| 113 | Mr Mihir Ghadshi  | 2001-09-12 | Ratnagiri   | Web Designing    |
+| 114 | Mr Sahil Kadu     | 2000-05-10 | Shrivardhan | Software Testing |
+| 115 | Mr Mihir Ghadshi  | 2001-09-12 | Ratnagiri   | Web Designing    |
+| 118 | Mr Aditya Ghatge  | 2001-10-11 | Kolhapur    | ML               |
+| 121 | Mr Jay Chunekar   | 0000-00-00 | Alibaugh    |                  |
+| 122 | Mr Mihir Ghadshi  | 2001-09-12 | Ratnagiri   | Web Designing    |
+| 124 | Mr Jay Chunekar   | 2000-03-23 | Alibaugh    | Cyber Security   |
+| 128 | Mr Pranav Jadhav  | 2000-08-19 | Pune        | Java Program     |
+| 170 | Ms Pinki Sharma   | 1998-09-19 | Indore      | ML               |
+| 190 | Ms Anamika Pandey | 2001-09-23 | pune        | Python           |
++-----+-------------------+------------+-------------+------------------+
+13 rows in set (0.000 sec)
+
+MariaDB [sms]> select * from india order by name desc;
++-----+-------------------+------------+-------------+------------------+
+| rno | name              | dob        | city        | course           |
++-----+-------------------+------------+-------------+------------------+
+| 170 | Ms Pinki Sharma   | 1998-09-19 | Indore      | ML               |
+| 190 | Ms Anamika Pandey | 2001-09-23 | pune        | Python           |
+| 114 | Mr Sahil Kadu     | 2000-05-10 | Shrivardhan | Software Testing |
+| 128 | Mr Pranav Jadhav  | 2000-08-19 | Pune        | Java Program     |
+| 113 | Mr Mihir Ghadshi  | 2001-09-12 | Ratnagiri   | Web Designing    |
+| 112 | Mr Mihir Ghadshi  | 2001-09-12 | Ratnagiri   | Web Designing    |
+| 111 | Mr Mihir Ghadshi  | 2002-06-16 | Ratnagiri   | My SQL           |
+| 122 | Mr Mihir Ghadshi  | 2001-09-12 | Ratnagiri   | Web Designing    |
+| 115 | Mr Mihir Ghadshi  | 2001-09-12 | Ratnagiri   | Web Designing    |
+| 121 | Mr Jay Chunekar   | 0000-00-00 | Alibaugh    |                  |
+| 124 | Mr Jay Chunekar   | 2000-03-23 | Alibaugh    | Cyber Security   |
+| 110 | Mr Jatin Ghadi    | 2002-11-10 | Mumbai      | Python           |
+| 118 | Mr Aditya Ghatge  | 2001-10-11 | Kolhapur    | ML               |
++-----+-------------------+------------+-------------+------------------+
+13 rows in set (0.000 sec)
+
+MariaDB [sms]> update india set city='Pune' where rno=190;
+Query OK, 1 row affected (0.003 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [sms]> select * from india order by name desc;
++-----+-------------------+------------+-------------+------------------+
+| rno | name              | dob        | city        | course           |
++-----+-------------------+------------+-------------+------------------+
+| 170 | Ms Pinki Sharma   | 1998-09-19 | Indore      | ML               |
+| 190 | Ms Anamika Pandey | 2001-09-23 | Pune        | Python           |
+| 114 | Mr Sahil Kadu     | 2000-05-10 | Shrivardhan | Software Testing |
+| 128 | Mr Pranav Jadhav  | 2000-08-19 | Pune        | Java Program     |
+| 113 | Mr Mihir Ghadshi  | 2001-09-12 | Ratnagiri   | Web Designing    |
+| 112 | Mr Mihir Ghadshi  | 2001-09-12 | Ratnagiri   | Web Designing    |
+| 111 | Mr Mihir Ghadshi  | 2002-06-16 | Ratnagiri   | My SQL           |
+| 122 | Mr Mihir Ghadshi  | 2001-09-12 | Ratnagiri   | Web Designing    |
+| 115 | Mr Mihir Ghadshi  | 2001-09-12 | Ratnagiri   | Web Designing    |
+| 121 | Mr Jay Chunekar   | 0000-00-00 | Alibaugh    |                  |
+| 124 | Mr Jay Chunekar   | 2000-03-23 | Alibaugh    | Cyber Security   |
+| 110 | Mr Jatin Ghadi    | 2002-11-10 | Mumbai      | Python           |
+| 118 | Mr Aditya Ghatge  | 2001-10-11 | Kolhapur    | ML               |
++-----+-------------------+------------+-------------+------------------+
+13 rows in set (0.000 sec)
+
+MariaDB [sms]> select course,count(*) from india group by course;
++------------------+----------+
+| course           | count(*) |
++------------------+----------+
+|                  |        1 |
+| Cyber Security   |        1 |
+| Java Program     |        1 |
+| ML               |        2 |
+| My SQL           |        1 |
+| Python           |        2 |
+| Software Testing |        1 |
+| Web Designing    |        4 |
++------------------+----------+
+8 rows in set (0.001 sec)
+
+MariaDB [sms]> select course,count(*) from india;
++--------+----------+
+| course | count(*) |
++--------+----------+
+| Python |       13 |
++--------+----------+
+1 row in set (0.001 sec)
+
+MariaDB [sms]> create table employee(empid varchar(10) primary key constraint chk_eid check(empid like 'E___'),
+    -> ename varchar(20) not null,age int notnull constraint chk_ag check(age>=25);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'constraint chk_eid check(empid like 'E___'),
+ename varchar(20) not null,age i...' at line 1
+MariaDB [sms]> create table employee(empid varchar(10) primary key, ename varchar(20) not null, age int not null,
+    -> constraint chk_id check(empid like 'E____'));
+Query OK, 0 rows affected (0.066 sec)
+
+MariaDB [sms]> desc employee;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| empid | varchar(10) | NO   | PRI | NULL    |       |
+| ename | varchar(20) | NO   |     | NULL    |       |
+| age   | int(11)     | NO   |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+3 rows in set (0.014 sec)
+
+MariaDB [sms]> alter table employee add constraint chk_ag check(age>=25);
+Query OK, 0 rows affected (0.053 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [sms]> desc employee;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| empid | varchar(10) | NO   | PRI | NULL    |       |
+| ename | varchar(20) | NO   |     | NULL    |       |
+| age   | int(11)     | NO   |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+3 rows in set (0.016 sec)
+
+MariaDB [sms]> exit
+Bye
+
+Itvedant CR-07@CR3-PC07 c:\xampp
+#
