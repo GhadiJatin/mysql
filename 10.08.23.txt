@@ -1,0 +1,243 @@
+
+Setting environment for using XAMPP for Windows.
+Itvedant CR-07@CR3-PC07 c:\xampp
+# mysql -u root
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 8
+Server version: 10.4.28-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| geeks4geeks        |
+| information_schema |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| sms                |
+| test               |
++--------------------+
+7 rows in set (0.023 sec)
+
+MariaDB [(none)]> use sms;
+Database changed
+MariaDB [sms]> show tables;
++---------------+
+| Tables_in_sms |
++---------------+
+| customer      |
+| employee      |
+| india         |
+| orders        |
+| student       |
++---------------+
+5 rows in set (0.001 sec)
+
+MariaDB [sms]> create table emp(emp_id int primary key auto_increment,emp_name varchar(20) not null,
+    -> age int not null,city varchar(20),income int not null);
+Query OK, 0 rows affected (0.013 sec)
+
+MariaDB [sms]> desc emp;
++----------+-------------+------+-----+---------+----------------+
+| Field    | Type        | Null | Key | Default | Extra          |
++----------+-------------+------+-----+---------+----------------+
+| emp_id   | int(11)     | NO   | PRI | NULL    | auto_increment |
+| emp_name | varchar(20) | NO   |     | NULL    |                |
+| age      | int(11)     | NO   |     | NULL    |                |
+| city     | varchar(20) | YES  |     | NULL    |                |
+| income   | int(11)     | NO   |     | NULL    |                |
++----------+-------------+------+-----+---------+----------------+
+5 rows in set (0.014 sec)
+
+MariaDB [sms]> insert into emp(emp_name,age,city,income)values('Pankaj Gupta',20,'Indore',20000),
+    -> ('Renu Agarwal',32,'Mumbai',30000),
+    -> ('Deepak Mishra',40,'Pune',15000),
+    -> ('Suresh Sharma',35,'Indore',35000),
+    -> ('Geeta Rai',38,'Pune',65000),
+    -> ('Jitendra Rathod',45,'Mumbai',76000),
+    -> ('Kamal Sharma',52,'Indore',34000);
+Query OK, 7 rows affected (0.055 sec)
+Records: 7  Duplicates: 0  Warnings: 0
+
+MariaDB [sms]> select * from emp;
++--------+-----------------+-----+--------+--------+
+| emp_id | emp_name        | age | city   | income |
++--------+-----------------+-----+--------+--------+
+|      1 | Pankaj Gupta    |  20 | Indore |  20000 |
+|      2 | Renu Agarwal    |  32 | Mumbai |  30000 |
+|      3 | Deepak Mishra   |  40 | Pune   |  15000 |
+|      4 | Suresh Sharma   |  35 | Indore |  35000 |
+|      5 | Geeta Rai       |  38 | Pune   |  65000 |
+|      6 | Jitendra Rathod |  45 | Mumbai |  76000 |
+|      7 | Kamal Sharma    |  52 | Indore |  34000 |
++--------+-----------------+-----+--------+--------+
+7 rows in set (0.000 sec)
+
+MariaDB [sms]> update emp set city='Mumbai' where emp_id=1;
+Query OK, 1 row affected (0.003 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [sms]> select * from emp;
++--------+-----------------+-----+--------+--------+
+| emp_id | emp_name        | age | city   | income |
++--------+-----------------+-----+--------+--------+
+|      1 | Pankaj Gupta    |  20 | Mumbai |  20000 |
+|      2 | Renu Agarwal    |  32 | Mumbai |  30000 |
+|      3 | Deepak Mishra   |  40 | Pune   |  15000 |
+|      4 | Suresh Sharma   |  35 | Indore |  35000 |
+|      5 | Geeta Rai       |  38 | Pune   |  65000 |
+|      6 | Jitendra Rathod |  45 | Mumbai |  76000 |
+|      7 | Kamal Sharma    |  52 | Indore |  34000 |
++--------+-----------------+-----+--------+--------+
+7 rows in set (0.000 sec)
+
+MariaDB [sms]> select * from emp limit 5;
++--------+---------------+-----+--------+--------+
+| emp_id | emp_name      | age | city   | income |
++--------+---------------+-----+--------+--------+
+|      1 | Pankaj Gupta  |  20 | Mumbai |  20000 |
+|      2 | Renu Agarwal  |  32 | Mumbai |  30000 |
+|      3 | Deepak Mishra |  40 | Pune   |  15000 |
+|      4 | Suresh Sharma |  35 | Indore |  35000 |
+|      5 | Geeta Rai     |  38 | Pune   |  65000 |
++--------+---------------+-----+--------+--------+
+5 rows in set (0.000 sec)
+
+MariaDB [sms]> select * from emp order by age limit 5;
++--------+---------------+-----+--------+--------+
+| emp_id | emp_name      | age | city   | income |
++--------+---------------+-----+--------+--------+
+|      1 | Pankaj Gupta  |  20 | Mumbai |  20000 |
+|      2 | Renu Agarwal  |  32 | Mumbai |  30000 |
+|      4 | Suresh Sharma |  35 | Indore |  35000 |
+|      5 | Geeta Rai     |  38 | Pune   |  65000 |
+|      3 | Deepak Mishra |  40 | Pune   |  15000 |
++--------+---------------+-----+--------+--------+
+5 rows in set (0.001 sec)
+
+MariaDB [sms]> select * from emp order by income desc limit 5;
++--------+-----------------+-----+--------+--------+
+| emp_id | emp_name        | age | city   | income |
++--------+-----------------+-----+--------+--------+
+|      6 | Jitendra Rathod |  45 | Mumbai |  76000 |
+|      5 | Geeta Rai       |  38 | Pune   |  65000 |
+|      4 | Suresh Sharma   |  35 | Indore |  35000 |
+|      7 | Kamal Sharma    |  52 | Indore |  34000 |
+|      2 | Renu Agarwal    |  32 | Mumbai |  30000 |
++--------+-----------------+-----+--------+--------+
+5 rows in set (0.000 sec)
+
+MariaDB [sms]> select * from emp where age=>35 order by income desc limit 5;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '>35 order by income desc limit 5' at line 1
+MariaDB [sms]> select * from emp where age>35 order by income desc limit 5;
++--------+-----------------+-----+--------+--------+
+| emp_id | emp_name        | age | city   | income |
++--------+-----------------+-----+--------+--------+
+|      6 | Jitendra Rathod |  45 | Mumbai |  76000 |
+|      5 | Geeta Rai       |  38 | Pune   |  65000 |
+|      7 | Kamal Sharma    |  52 | Indore |  34000 |
+|      3 | Deepak Mishra   |  40 | Pune   |  15000 |
++--------+-----------------+-----+--------+--------+
+4 rows in set (0.000 sec)
+
+MariaDB [sms]> select * from emp limit 3,4;
++--------+-----------------+-----+--------+--------+
+| emp_id | emp_name        | age | city   | income |
++--------+-----------------+-----+--------+--------+
+|      4 | Suresh Sharma   |  35 | Indore |  35000 |
+|      5 | Geeta Rai       |  38 | Pune   |  65000 |
+|      6 | Jitendra Rathod |  45 | Mumbai |  76000 |
+|      7 | Kamal Sharma    |  52 | Indore |  34000 |
++--------+-----------------+-----+--------+--------+
+4 rows in set (0.000 sec)
+
+MariaDB [sms]> select emp_id,emp_name,age,
+    -> case
+    -> when income =<=20000 then 'Low Salary'
+    -> when income ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '<=20000 then 'Low Salary'
+when income' at line 3
+MariaDB [sms]> select emp_id,emp_name,age,
+    -> case
+    -> when income<=20000 then 'Low Salary'
+    -> when income>20000 and income<=50000 them 'Normal Salary'
+    -> else 'High Salary'
+    -> end as status
+    -> from emp;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'them 'Normal Salary'
+else 'High Salary'
+end as status
+from emp' at line 4
+MariaDB [sms]> select emp_id,emp_name,age,
+    -> case
+    -> when income<=20000 then 'Low Salary'
+    -> when income>20000 and income<=50000 then 'Normal Salary'
+    -> else 'High Salary'
+    -> end as status
+    -> from emp;
++--------+-----------------+-----+---------------+
+| emp_id | emp_name        | age | status        |
++--------+-----------------+-----+---------------+
+|      1 | Pankaj Gupta    |  20 | Low Salary    |
+|      2 | Renu Agarwal    |  32 | Normal Salary |
+|      3 | Deepak Mishra   |  40 | Low Salary    |
+|      4 | Suresh Sharma   |  35 | Normal Salary |
+|      5 | Geeta Rai       |  38 | High Salary   |
+|      6 | Jitendra Rathod |  45 | High Salary   |
+|      7 | Kamal Sharma    |  52 | Normal Salary |
++--------+-----------------+-----+---------------+
+7 rows in set (0.000 sec)
+
+MariaDB [sms]> select sum(income) from emp;
++-------------+
+| sum(income) |
++-------------+
+|      275000 |
++-------------+
+1 row in set (0.001 sec)
+
+MariaDB [sms]> select sum(income) "Total_Salary" from emp;
++--------------+
+| Total_Salary |
++--------------+
+|       275000 |
++--------------+
+1 row in set (0.000 sec)
+
+MariaDB [sms]> select avg(income) "Average_Salary" from emp;
++----------------+
+| Average_Salary |
++----------------+
+|     39285.7143 |
++----------------+
+1 row in set (0.000 sec)
+
+MariaDB [sms]> select max(income) "Maximum_Salary",min(income) "Minimum_Salary" from emp;
++----------------+----------------+
+| Maximum_Salary | Minimum_Salary |
++----------------+----------------+
+|          76000 |          15000 |
++----------------+----------------+
+1 row in set (0.000 sec)
+
+MariaDB [sms]> select * from emp where income=760000;
+Empty set (0.000 sec)
+
+MariaDB [sms]> select * from emp where income=76000;
++--------+-----------------+-----+--------+--------+
+| emp_id | emp_name        | age | city   | income |
++--------+-----------------+-----+--------+--------+
+|      6 | Jitendra Rathod |  45 | Mumbai |  76000 |
++--------+-----------------+-----+--------+--------+
+1 row in set (0.000 sec)
+
+MariaDB [sms]> exit
+Bye
+
+Itvedant CR-07@CR3-PC07 c:\xampp
+#
