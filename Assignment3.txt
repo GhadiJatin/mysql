@@ -1,0 +1,21 @@
+MariaDB [sms]> create database emp;
+Query OK, 1 row affected (0.001 sec)
+
+MariaDB [sms]> use emp;
+Database changed
+MariaDB [emp]> create table employee(emp_id int primary key auto_increment,emp_name varchar(20) not null,
+    -> income int not null);
+Query OK, 0 rows affected (0.015 sec)
+
+
+MariaDB [emp]> desc employee;
++----------+-------------+------+-----+---------+----------------+
+| Field    | Type        | Null | Key | Default | Extra          |
++----------+-------------+------+-----+---------+----------------+
+| emp_id   | int(11)     | NO   | PRI | NULL    | auto_increment |
+| emp_name | varchar(20) | NO   |     | NULL    |                |
+| city     | varchar(20) | YES  |     | NULL    |                |
+| income   | int(11)     | NO   |     | NULL    |                |
++----------+-------------+------+-----+---------+----------------+
+4 rows in set (0.012 sec)
+

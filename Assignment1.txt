@@ -1,0 +1,16 @@
+MariaDB [sms]> create table client (Clientno char(6) primary key,Name varchar(20) not null,City varchar(50) not null,PinNumber int,Mobile char(10));
+Query OK, 0 rows affected (0.014 sec)
+
+MariaDB [sms]> desc client;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| Clientno  | char(6)     | NO   | PRI | NULL    |       |
+| Name      | varchar(20) | NO   |     | NULL    |       |
+| City      | varchar(50) | NO   |     | NULL    |       |
+| PinNumber | int(11)     | YES  |     | NULL    |       |
+| Mobile    | char(10)    | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+5 rows in set (0.015 sec)
+
+MariaDB [sms]>

@@ -1,0 +1,22 @@
+MariaDB [sms]> create table grocery(item_no int, item_name varchar(20), mfd varchar (10), expdate varchar(12), address varchar(20), city varchar(10));
+Query OK, 0 rows affected (0.016 sec)
+
+MariaDB [sms]> desc grocery;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| item_no   | int(11)     | YES  |     | NULL    |       |
+| item_name | varchar(20) | YES  |     | NULL    |       |
+| mfd       | varchar(10) | YES  |     | NULL    |       |
+| expdate   | varchar(12) | YES  |     | NULL    |       |
+| address   | varchar(20) | YES  |     | NULL    |       |
+| city      | varchar(10) | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+6 rows in set (0.015 sec)
+
+MariaDB [sms]> drop table grocery;
+Query OK, 0 rows affected (0.055 sec)
+
+MariaDB [sms]> desc grocery;
+ERROR 1146 (42S02): Table 'sms.grocery' doesn't exist
+MariaDB [sms]>
