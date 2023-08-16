@@ -1,0 +1,440 @@
+
+Setting environment for using XAMPP for Windows.
+Itvedant CR-07@CR3-PC07 c:\xampp
+# mysql -u root
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 8
+Server version: 10.4.28-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| emp                |
+| geeks4geeks        |
+| information_schema |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| sms                |
+| test               |
++--------------------+
+8 rows in set (0.027 sec)
+
+MariaDB [(none)]> use sms
+Database changed
+MariaDB [sms]> select * from india;
++-----+-------------------+------------+-------------+------------------+
+| rno | name              | dob        | city        | course           |
++-----+-------------------+------------+-------------+------------------+
+| 110 | Mr Jatin Ghadi    | 2002-11-10 | Mumbai      | Python           |
+| 111 | Mr Mihir Ghadshi  | 2002-06-16 | Ratnagiri   | My SQL           |
+| 112 | Mr Mihir Ghadshi  | 2001-09-12 | Ratnagiri   | Web Designing    |
+| 113 | Mr Mihir Ghadshi  | 2001-09-12 | Ratnagiri   | Web Designing    |
+| 114 | Mr Sahil Kadu     | 2000-05-10 | Shrivardhan | Software Testing |
+| 115 | Mr Mihir Ghadshi  | 2001-09-12 | Ratnagiri   | Web Designing    |
+| 118 | Mr Aditya Ghatge  | 2001-10-11 | Kolhapur    | ML               |
+| 121 | Mr Jay Chunekar   | 0000-00-00 | Alibaugh    |                  |
+| 122 | Mr Mihir Ghadshi  | 2001-09-12 | Ratnagiri   | Web Designing    |
+| 124 | Mr Jay Chunekar   | 2000-03-23 | Alibaugh    | Cyber Security   |
+| 128 | Mr Pranav Jadhav  | 2000-08-19 | Pune        | Java Program     |
+| 170 | Ms Pinki Sharma   | 1998-09-19 | Indore      | ML               |
+| 190 | Ms Anamika Pandey | 2001-09-23 | Pune        | Python           |
++-----+-------------------+------------+-------------+------------------+
+13 rows in set (0.054 sec)
+
+MariaDB [sms]> select year(dob)-year(curdate())from india;
++---------------------------+
+| year(dob)-year(curdate()) |
++---------------------------+
+|                       -21 |
+|                       -21 |
+|                       -22 |
+|                       -22 |
+|                       -23 |
+|                       -22 |
+|                       -22 |
+|                     -2023 |
+|                       -22 |
+|                       -23 |
+|                       -23 |
+|                       -25 |
+|                       -22 |
++---------------------------+
+13 rows in set (0.000 sec)
+
+MariaDB [sms]> select abs(year(dob)-year(curdate())) from india;
++--------------------------------+
+| abs(year(dob)-year(curdate())) |
++--------------------------------+
+|                             21 |
+|                             21 |
+|                             22 |
+|                             22 |
+|                             23 |
+|                             22 |
+|                             22 |
+|                           2023 |
+|                             22 |
+|                             23 |
+|                             23 |
+|                             25 |
+|                             22 |
++--------------------------------+
+13 rows in set (0.000 sec)
+
+MariaDB [sms]> select sqrt(10);
++--------------------+
+| sqrt(10)           |
++--------------------+
+| 3.1622776601683795 |
++--------------------+
+1 row in set (0.000 sec)
+
+MariaDB [sms]> select sqrt(625);
++-----------+
+| sqrt(625) |
++-----------+
+|        25 |
++-----------+
+1 row in set (0.000 sec)
+
+MariaDB [sms]> select round(sqrt(8),2);
++------------------+
+| round(sqrt(8),2) |
++------------------+
+|             2.83 |
++------------------+
+1 row in set (0.000 sec)
+
+MariaDB [sms]> select sqrt(rno) from india;
++--------------------+
+| sqrt(rno)          |
++--------------------+
+| 10.488088481701515 |
+| 10.535653752852738 |
+| 10.583005244258363 |
+|  10.63014581273465 |
+| 10.677078252031311 |
+| 10.723805294763608 |
+| 10.862780491200215 |
+|                 11 |
+| 11.045361017187261 |
+| 11.135528725660043 |
+| 11.313708498984761 |
+| 13.038404810405298 |
+| 13.784048752090222 |
++--------------------+
+13 rows in set (0.000 sec)
+
+MariaDB [sms]> select round(sqrt(nrno),3)from student;
+ERROR 1054 (42S22): Unknown column 'nrno' in 'field list'
+MariaDB [sms]> select round(sqrt(nrno),111)from student;
+ERROR 1054 (42S22): Unknown column 'nrno' in 'field list'
+MariaDB [sms]> select round(sqrt(rno),111)from student;
+ERROR 1054 (42S22): Unknown column 'rno' in 'field list'
+MariaDB [sms]> select round(sqrt(rno,111)from student;
+ERROR 1582 (42000): Incorrect parameter count in the call to native function 'sqrt'
+MariaDB [sms]> select round(sqrt(rno,111),2)from student;
+ERROR 1582 (42000): Incorrect parameter count in the call to native function 'sqrt'
+MariaDB [sms]> select round(sqrt(rno,111),2)from india;
+ERROR 1582 (42000): Incorrect parameter count in the call to native function 'sqrt'
+MariaDB [sms]> select round(sqrt(rno),2)from india;
++--------------------+
+| round(sqrt(rno),2) |
++--------------------+
+|              10.49 |
+|              10.54 |
+|              10.58 |
+|              10.63 |
+|              10.68 |
+|              10.72 |
+|              10.86 |
+|              11.00 |
+|              11.05 |
+|              11.14 |
+|              11.31 |
+|              13.04 |
+|              13.78 |
++--------------------+
+13 rows in set (0.000 sec)
+
+MariaDB [sms]> select truncate(sqrt(8),2);
++---------------------+
+| truncate(sqrt(8),2) |
++---------------------+
+|                2.82 |
++---------------------+
+1 row in set (0.000 sec)
+
+MariaDB [sms]> select sqrt(8);
++--------------------+
+| sqrt(8)            |
++--------------------+
+| 2.8284271247461903 |
++--------------------+
+1 row in set (0.000 sec)
+
+MariaDB [sms]> select ceil(789.20);
++--------------+
+| ceil(789.20) |
++--------------+
+|          790 |
++--------------+
+1 row in set (0.000 sec)
+
+MariaDB [sms]> select ceiling(789.20);
++-----------------+
+| ceiling(789.20) |
++-----------------+
+|             790 |
++-----------------+
+1 row in set (0.000 sec)
+
+MariaDB [sms]> select ceiling(-789.20);
++------------------+
+| ceiling(-789.20) |
++------------------+
+|             -789 |
++------------------+
+1 row in set (0.000 sec)
+
+MariaDB [sms]> select floor (789.90);
++----------------+
+| floor (789.90) |
++----------------+
+|            789 |
++----------------+
+1 row in set (0.000 sec)
+
+MariaDB [sms]> select floor (-789.90);
++-----------------+
+| floor (-789.90) |
++-----------------+
+|            -790 |
++-----------------+
+1 row in set (0.000 sec)
+
+MariaDB [sms]> select pow(3,6);
++----------+
+| pow(3,6) |
++----------+
+|      729 |
++----------+
+1 row in set (0.000 sec)
+
+MariaDB [sms]> selct mod(5,2);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'selct mod(5,2)' at line 1
+MariaDB [sms]> select mod(5,2);
++----------+
+| mod(5,2) |
++----------+
+|        1 |
++----------+
+1 row in set (0.000 sec)
+
+MariaDB [sms]> select mod(4,2);
++----------+
+| mod(4,2) |
++----------+
+|        0 |
++----------+
+1 row in set (0.000 sec)
+
+MariaDB [sms]> select 5%2;
++------+
+| 5%2  |
++------+
+|    1 |
++------+
+1 row in set (0.000 sec)
+
+MariaDB [sms]> 4/2;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '4/2' at line 1
+MariaDB [sms]> select 4/2;
++--------+
+| 4/2    |
++--------+
+| 2.0000 |
++--------+
+1 row in set (0.000 sec)
+
+MariaDB [sms]>
+MariaDB [sms]> select concat('Meena','Pandey');
++--------------------------+
+| concat('Meena','Pandey') |
++--------------------------+
+| MeenaPandey              |
++--------------------------+
+1 row in set (0.000 sec)
+
+MariaDB [sms]> select concat('Meena',' ','Pandey');
++------------------------------+
+| concat('Meena',' ','Pandey') |
++------------------------------+
+| Meena Pandey                 |
++------------------------------+
+1 row in set (0.000 sec)
+
+MariaDB [sms]> select concat('Mihir',' ','Ghadshi');
++-------------------------------+
+| concat('Mihir',' ','Ghadshi') |
++-------------------------------+
+| Mihir Ghadshi                 |
++-------------------------------+
+1 row in set (0.000 sec)
+
+MariaDB [sms]> select concat('Mrs.',' ','Jatin',' ','Ghadi');
++----------------------------------------+
+| concat('Mrs.',' ','Jatin',' ','Ghadi') |
++----------------------------------------+
+| Mrs. Jatin Ghadi                       |
++----------------------------------------+
+1 row in set (0.000 sec)
+
+MariaDB [sms]> select concat('Mr.',' ','Jatin',' ','Ghadi');
++---------------------------------------+
+| concat('Mr.',' ','Jatin',' ','Ghadi') |
++---------------------------------------+
+| Mr. Jatin Ghadi                       |
++---------------------------------------+
+1 row in set (0.000 sec)
+
+MariaDB [sms]>
+MariaDB [sms]>
+MariaDB [sms]>
+MariaDB [sms]>
+MariaDB [sms]>
+MariaDB [sms]>
+MariaDB [sms]>
+MariaDB [sms]>
+MariaDB [sms]>
+MariaDB [sms]>
+MariaDB [sms]>
+MariaDB [sms]>
+MariaDB [sms]>
+MariaDB [sms]>
+MariaDB [sms]>
+MariaDB [sms]>
+MariaDB [sms]>
+MariaDB [sms]> select concat_ws(" ",'Mr','Jatin','Ghadi') Full Name;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Name' at line 1
+MariaDB [sms]> select concat_ws(" ",'Mr','Jatin','Ghadi') Full_Name;
++----------------+
+| Full_Name      |
++----------------+
+| Mr Jatin Ghadi |
++----------------+
+1 row in set (0.000 sec)
+
+MariaDB [sms]> select concat_ws("-",'Mr','Jatin','Ghadi') Full_Name;
++----------------+
+| Full_Name      |
++----------------+
+| Mr-Jatin-Ghadi |
++----------------+
+1 row in set (0.000 sec)
+
+MariaDB [sms]> select LPAD('Jatin'10,'*');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '10,'*')' at line 1
+MariaDB [sms]> select LPAD('Jatin',10,'*');
++----------------------+
+| LPAD('Jatin',10,'*') |
++----------------------+
+| *****Jatin           |
++----------------------+
+1 row in set (0.000 sec)
+
+MariaDB [sms]> select RPAD('Jatin',10,'*');
++----------------------+
+| RPAD('Jatin',10,'*') |
++----------------------+
+| Jatin*****           |
++----------------------+
+1 row in set (0.000 sec)
+
+MariaDB [sms]> select Ltrim("       Jatin Ghadi");
++-----------------------------+
+| Ltrim("       Jatin Ghadi") |
++-----------------------------+
+| Jatin Ghadi                 |
++-----------------------------+
+1 row in set (0.000 sec)
+
+MariaDB [sms]> select "           Jatin Ghadi";
++------------------------+
+| Jatin Ghadi            |
++------------------------+
+|            Jatin Ghadi |
++------------------------+
+1 row in set (0.000 sec)
+
+MariaDB [sms]> select Rtrim("     Jatin       "):
+    -> select Rtrim("     Jatin       ");
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ':
+select Rtrim("     Jatin       ")' at line 1
+MariaDB [sms]> select Rtrim("     Jatin       ");
++----------------------------+
+| Rtrim("     Jatin       ") |
++----------------------------+
+|      Jatin                 |
++----------------------------+
+1 row in set (0.000 sec)
+
+MariaDB [sms]>
+MariaDB [sms]>
+MariaDB [sms]>
+MariaDB [sms]>
+MariaDB [sms]>
+MariaDB [sms]>
+MariaDB [sms]>
+MariaDB [sms]>
+MariaDB [sms]> select concat(rtrim("Jatin       "),"Ghadi");
++---------------------------------------+
+| concat(rtrim("Jatin       "),"Ghadi") |
++---------------------------------------+
+| JatinGhadi                            |
++---------------------------------------+
+1 row in set (0.000 sec)
+
+MariaDB [sms]> select concat("Jatin     ","Ghadi");
++------------------------------+
+| concat("Jatin     ","Ghadi") |
++------------------------------+
+| Jatin     Ghadi              |
++------------------------------+
+1 row in set (0.000 sec)
+
+MariaDB [sms]> select concat("        Jatin       ","Ghadi");
++----------------------------------------+
+| concat("        Jatin       ","Ghadi") |
++----------------------------------------+
+|         Jatin       Ghadi              |
++----------------------------------------+
+1 row in set (0.000 sec)
+
+MariaDB [sms]> select concat(trim("        Jatin       "),"Ghadi");
++----------------------------------------------+
+| concat(trim("        Jatin       "),"Ghadi") |
++----------------------------------------------+
+| JatinGhadi                                   |
++----------------------------------------------+
+1 row in set (0.000 sec)
+
+MariaDB [sms]> select upper('Jatin Ghadi');
++----------------------+
+| upper('Jatin Ghadi') |
++----------------------+
+| JATIN GHADI          |
++----------------------+
+1 row in set (0.000 sec)
+
+MariaDB [sms]> exit;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+Bye
+
+Itvedant CR-07@CR3-PC07 c:\xampp
+#
