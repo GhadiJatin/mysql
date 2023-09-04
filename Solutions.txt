@@ -1,0 +1,134 @@
+SELECT MAX(salary)
+FROM employees
+WHERE sex = 'F' AND branch_id = 1;
+
+
+SELECT e.*, COUNT(c.client_id) AS client_count
+FROM employees e
+LEFT JOIN sales s ON e.emp_id = s.emp_id
+LEFT JOIN clients c ON s.client_id = c.client_id
+WHERE e.salary > 50000
+GROUP BY e.emp_id;
+
+
+SELECT AVG(salary)
+FROM employees
+WHERE sex = 'M' AND branch_id = 2;
+
+
+SELECT branch_id, COUNT(client_id) AS client_count
+FROM clients
+GROUP BY branch_id
+HAVING client_count > 5;
+
+
+SELECT e.emp_id, e.first_name, e.last_name, SUM(s.total_sales) AS total_sales
+FROM employees e
+JOIN sales s ON e.emp_id = s.emp_id
+WHERE e.branch_id = 1 AND s.total_sales > 100000
+GROUP BY e.emp_id, e.first_name, e.last_name;
+
+
+SELECT c.client_id, c.client_name, SUM(s.total_sales) AS total_sales
+FROM clients c
+LEFT JOIN sales s ON c.client_id = s.client_id
+WHERE c.branch_id = 1
+GROUP BY c.client_id, c.client_name;
+
+
+SELECT *
+FROM employees
+WHERE sex = 'F' AND salary > 70000;
+
+
+SELECT *
+FROM clients
+WHERE client_name LIKE 'T%';
+
+
+SELECT first_name, last_name
+FROM employees
+ORDER BY salary DESC;
+
+
+SELECT *
+FROM clients
+ORDER BY client_name;
+
+
+SELECT c.client_id, c.client_name, SUM(s.total_sales) AS total_sales
+FROM clients c
+LEFT JOIN sales s ON c.client_id = s.client_id
+GROUP BY c.client_id, c.client_name
+ORDER BY total_sales DESC;
+
+
+SELECT *
+FROM employees
+WHERE last_name LIKE '%son';
+
+
+SELECT supplier_name
+FROM suppliers
+WHERE supply_type LIKE '%Paper%';
+
+
+SELECT first_name, last_name, salary
+FROM employees
+ORDER BY salary;
+
+
+SELECT branch_name
+FROM branches
+ORDER BY branch_name;
+
+
+SELECT supplier_name, supply_type
+FROM suppliers
+ORDER BY supply_type;
+
+
+SELECT sex, AVG(salary) AS avg_salary
+FROM employees
+GROUP BY sex;
+
+
+SELECT b.branch_name, COUNT(c.client_id) AS client_count
+FROM branches b
+LEFT JOIN clients c ON b.branch_id = c.branch_id
+GROUP BY b.branch_name;
+
+
+SELECT client_id, client_name, MAX(total_sales) AS max_total_sales
+FROM sales
+JOIN clients ON sales.client_id = clients.client_id
+GROUP BY client_id, client_name;
+
+
+SELECT b.branch_name, COUNT(e.emp_id) AS employee_count
+FROM branches b
+LEFT JOIN employees e ON b.branch_id = e.branch_id
+GROUP BY b.branch_name;
+
+
+SELECT e.emp_id, e.first_name, e.last_name, COUNT(s.client_id) AS client_count
+FROM employees e
+LEFT JOIN sales s ON e.emp_id = s.emp_id
+GROUP BY e.emp_id, e.first_name, e.last_name;
+
+
+SELECT b.branch_name, AVG(YEAR(birth_date)) AS avg_birth_year
+FROM employees e
+JOIN branches b ON e.branch_id = b.branch_id
+GROUP BY b.branch_name;
+
+
+
+
+
+
+
+
+
+
+
